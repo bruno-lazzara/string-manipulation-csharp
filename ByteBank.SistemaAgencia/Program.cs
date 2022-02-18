@@ -14,12 +14,7 @@ namespace ByteBank.SistemaAgencia
         {
             ContaCorrente conta = new ContaCorrente(847, 489754);
 
-            ModificadoresTeste teste = new ModificadoresTeste();
-            teste.MetodoPublico();
-            // teste.MetodoPrivado();
-            // teste.MetodoProtegido();
-            // teste.MetodoInterno();
-
+            FuncionarioAutenticavel carlos = null;
 
             Console.WriteLine(conta.Numero);
 

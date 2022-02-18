@@ -6,9 +6,12 @@ using System.Threading.Tasks;
 
 namespace ByteBank.Modelos
 {
+    /// <summary>
+    /// Define uma Conta Corrente do banco ByteBank.
+    /// </summary>
     public class ContaCorrente
     {
-        public static double TaxaOperacao { get; private set; }
+        private static int TaxaOperacao;
 
         public static int TotalDeContasCriadas { get; private set; }
 
@@ -17,10 +20,6 @@ namespace ByteBank.Modelos
         public int ContadorSaquesNaoPermitidos { get; private set; }
         public int ContadorTransferenciasNaoPermitidas { get; private set; }
 
-        // Quando uma propriedade é escrita com a sintaxe abaixo (somente com get, sem o set),
-        // está implícito que o set é do tipo private e readonly. Ou seja, isso faz com que o
-        // Numero e Agencia somente possam ser setados através do construtor da classe, impedindo
-        // que esses valores sejam modificados de outra maneira dentro da classe.
         public int Numero { get; }
         public int Agencia { get; }
 
@@ -42,7 +41,12 @@ namespace ByteBank.Modelos
             }
         }
 
-
+        /// <summary>
+        /// Cria uma instância de ContaCorrente com os argumentos utilizados.
+        /// </summary>
+        /// <param name="agencia"> Representa o valor da propriedade <see cref="Agencia"/> e deve possuir um valor maior que zero. </param>
+        /// <param name="numero"> Representa o valor da propriedade <see cref="Numero"/> e deve possuir um valor maior que zero.</param>
+        /// <exception cref="ArgumentException"></exception>
         public ContaCorrente(int agencia, int numero)
         {
             if (agencia <= 0)
@@ -62,7 +66,12 @@ namespace ByteBank.Modelos
             TaxaOperacao = 30 / TotalDeContasCriadas;
         }
 
-
+        /// <summary>
+        /// Realiza o saque e atualiza o valor da propriedade <see cref="Saldo"/>.
+        /// </summary>
+        /// <exception cref="ArgumentException"> Exceção lançada quando um valor negativo é utilizado no argumento <paramref name="valor"/>. </exception>
+        /// <exception cref="SaldoInsuficienteException"> Exceção lançada quando o valor de <paramref name="valor"/> é maior que o valor da propriedade <see cref="Saldo"/>. </exception>
+        /// <param name="valor"> Representa o valor a ser sacado, deve ser maior que 0 e menor que o <see cref="Saldo"/>. </param>
         public void Sacar(double valor)
         {
             if (valor < 0)

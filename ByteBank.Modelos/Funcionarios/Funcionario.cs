@@ -33,7 +33,6 @@ namespace ByteBank.Modelos.Funcionarios
         // implementação destes métodos.
         public abstract void AumentarSalario();
 
-        public abstract double GetBonificacao();
-        // OBS: métodos abstratos só podem existir em classes abstratas.
+        internal protected abstract double GetBonificacao();
     }
 }

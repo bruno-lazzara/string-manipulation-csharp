@@ -16,13 +16,6 @@ namespace ByteBank.Modelos
             _totalBonificacao += funcionario.GetBonificacao();
         }
 
-        // Sobrecargas do método Registrar -> dois ou mais métodos de mesmo nome,
-        // mas que recebem argumentos de tipos diferentes.
-        //public void Registrar(Diretor diretor)
-        //{
-        //    _totalBonificacao += diretor.GetBonificacao();
-        //}
-
         public double GetTotalBonificacao()
         {
             return _totalBonificacao;
