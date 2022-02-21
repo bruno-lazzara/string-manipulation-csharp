@@ -6,13 +6,82 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using ByteBank.Modelos;
 using ByteBank.Modelos.Funcionarios;
-using Humanizer;
 
 namespace ByteBank.SistemaAgencia
 {
     class Program
     {
         static void Main(string[] args)
+        {
+            Console.WriteLine("Olá, mundo!");
+            Console.WriteLine(123);
+            Console.WriteLine(10.5);
+            Console.WriteLine(true);
+
+            //Toda classe do C# deriva do tipo object por padrão
+            object conta = new ContaCorrente(456, 687876);
+            Console.WriteLine(conta);
+
+            string contaToString = conta.ToString();
+            Console.WriteLine("Resultado: " + contaToString);
+
+            // Desenvolvedor deriva da classe Funcionário, que por sua vez deriva do tipo object por padrão
+            object desenvolvedor = new Desenvolvedor("");
+            Console.WriteLine(desenvolvedor);
+
+
+
+
+
+            Cliente carlos_1 = new Cliente();
+            carlos_1.Nome = "Carlos";
+            carlos_1.CPF = "458.623.120-03";
+            carlos_1.Profissao = "Designer";
+            
+            Cliente carlos_2 = new Cliente();
+            carlos_2.Nome = "Carlos";
+            carlos_2.CPF = "458.623.120-03";
+            carlos_2.Profissao = "Designer";
+
+            // Comparando duas referências diferentes, então não são iguais.
+            if (carlos_1 == carlos_2)
+            {
+                Console.WriteLine("São iguais!");
+            }
+            else
+            {
+                Console.WriteLine("Não são iguais!");
+            }
+
+            // O método Equals() foi implementado na classe object e serve para comparar dois objetos.
+            // Na classe Cliente, esse método foi sobrescrito para comparar os dois objetos que criamos!
+            if (carlos_1.Equals(carlos_2))
+            {
+                Console.WriteLine("São iguais!");
+            }
+            else
+            {
+                Console.WriteLine("Não são iguais!");
+            }
+
+            ContaCorrente conta2 = new ContaCorrente(1658, 64187);
+            // O método Equals() na classe Cliente tenta a conversão do objeto passado como parâmetro para o tipo Cliente.
+            // Quando isso não é possível, o método já retorna false, que é o que ocorre neste caso.
+            if (carlos_1.Equals(conta2))
+            {
+                Console.WriteLine("São iguais!");
+            }
+            else
+            {
+                Console.WriteLine("Não são iguais!");
+            }
+
+
+
+            Console.ReadLine();
+        }
+
+        static void TestaString()
         {
             // Expressões regulares
             // string padrao = "[0123456789][0123456789][0123456789][0123456789][-][0123456789][0123456789][0123456789][0123456789]";
@@ -83,7 +152,7 @@ namespace ByteBank.SistemaAgencia
 
 
 
-            
+
             // Testando o método remove
             string testeRemocao = "primeiraParte&parteParaRemover";
             int indiceEComercial = testeRemocao.IndexOf('&');

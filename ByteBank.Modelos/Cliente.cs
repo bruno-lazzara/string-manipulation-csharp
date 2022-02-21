@@ -24,5 +24,19 @@ namespace ByteBank
             }
         }
         public string Profissao { get; set; }
+
+        public override bool Equals(object obj)
+        {
+            // Cliente outroCliente = (Cliente)obj; -> Este cast retorna uma exceção quando não é bem sucedido.
+            Cliente outroCliente = obj as Cliente; // Fazendo desta maneira, é retornado null caso o cast não tenha sucesso.
+
+            if (outroCliente == null)
+            {
+                return false;
+            }
+
+            return this.CPF == outroCliente.CPF;
+            // return this.Nome == outroCliente.Nome && this.CPF == outroCliente.CPF && this.Profissao == outroCliente.Profissao;
+        }
     }
 }
